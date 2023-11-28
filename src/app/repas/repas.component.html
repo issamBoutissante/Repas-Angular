@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let r of repas" class="col">
+        <div class="card h-100">
+          <img [src]="r.image" class="card-img-top" alt="{{r.nom}}">
+          <div class="card-body">
+            <h5 class="card-title">{{r.nom}}</h5>
+            <p class="card-text">Price: {{r.prix}}$</p>
+            <p class="card-text"><small class="text-muted">Likes : {{r.nbrLikes}}</small></p>
+            <p class="card-text"><small class="text-muted">DisLikes : {{r.nbrDislikes}}</small></p>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary" (click)="r.like()">J'aime</button>
+              <button class="btn btn-secondary" (click)="r.dislike()">J'aime Pas</button>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let com of r.comments">{{com}}</li>
+          </ul>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" [(ngModel)]="r.currentComment" placeholder="Add a comment...">
+              <button class="btn btn-outline-secondary" type="button" (click)="r.addComment()">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
